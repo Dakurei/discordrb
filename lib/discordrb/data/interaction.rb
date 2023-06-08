@@ -223,6 +223,7 @@ module Discordrb
     # @param allowed_mentions [Hash, AllowedMentions] Mentions that can ping on this message.
     # @param flags [Integer] Message flags.
     # @param ephemeral [true, false] Whether this message should only be visible to the interaction initiator.
+    # @param components [Array<#to_h>] An array of components
     # @yieldparam builder [Webhooks::Builder] An optional message builder. Arguments passed to the method overwrite builder data.
     def send_message(content: nil, embeds: nil, tts: false, allowed_mentions: nil, flags: 0, ephemeral: false, components: nil)
       flags |= 64 if ephemeral
@@ -258,6 +259,7 @@ module Discordrb
     # @param content [String] The message content.
     # @param embeds [Array<Hash, Webhooks::Embed>] The embeds for the message.
     # @param allowed_mentions [Hash, AllowedMentions] Mentions that can ping on this message.
+    # @param components [Array<#to_h>] An array of components
     # @yieldparam builder [Webhooks::Builder] An optional message builder. Arguments passed to the method overwrite builder data.
     def edit_message(message, content: nil, embeds: nil, allowed_mentions: nil, components: nil)
       builder = Discordrb::Webhooks::Builder.new
