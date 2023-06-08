@@ -124,6 +124,9 @@ module Discordrb::API::Webhook
   def token_edit_message(webhook_token, webhook_id, message_id, content = nil, embeds = nil, allowed_mentions = nil, components = nil, attachments = nil)
     data = { content: content, embeds: embeds, allowed_mentions: allowed_mentions, components: components }
 
+    # TODO: It will be necessary to add the ability to completely remove attachments from a message by setting the value to null in the payload. (In this method or elsewhere)
+    # https://discord.com/developers/docs/reference#editing-message-attachments
+
     payload = data.to_json
     if attachments
       files = [*0...attachments.size].zip(attachments).to_h
